@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">Registrarse</div>
+            <div class="card-body">
+                <form (submit)="signUp()">
+                    <div class="form-group">
+                        <div class="form-floating mb-3">
+                            <input [(ngModel)]="user.username" type="text" required class="form-control" placeholder="Nombre de Usuario">
+                            <label for="floatingInput">Nombre de Usuario</label>
+                        </div>
+                        <div class="form-floating">
+                            <input [(ngModel)]="user.password" type="password" required class="form-control" placeholder="Contraseña">
+                            <label for="floatingPassword">Contraseña</label>
+                        </div><br>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-lg btn-primary" type="submit">Registrarse</button>
+                        </div>           
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
