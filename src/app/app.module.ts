@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { UpdateMatchesComponent } from './components/update-matches/update-matches.component';
+import { IndexComponent } from './components/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
-    UpdateMatchesComponent
+    UpdateMatchesComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
