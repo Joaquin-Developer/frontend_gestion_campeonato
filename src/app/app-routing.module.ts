@@ -4,12 +4,14 @@ import { UpdateMatchesComponent } from './components/update-matches/update-match
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { IndexComponent } from './components/index/index.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 const routes: Routes = [
   { path: "", component: IndexComponent },
   { path: "updateMatches", component: UpdateMatchesComponent },
   { path: "signin", component: SigninComponent },
-  { path: "signup", component: SignupComponent }
+  { path: "signup", component: SignupComponent },
+  { path: "statistics", component: StatisticsComponent }
 ];
 
 @NgModule({
