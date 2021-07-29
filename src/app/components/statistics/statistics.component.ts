@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdministrationService } from '../../services/administration/administration.service';
 import { Team } from '../../models/Team'
-import { NgForm } from '@angular/forms'
-import { formatCurrency } from '@angular/common';
+// import { NgForm } from '@angular/forms'
+// import { formatCurrency } from '@angular/common';
 
 @Component({
   selector: 'app-statistics',
@@ -11,20 +11,36 @@ import { formatCurrency } from '@angular/common';
 })
 export class StatisticsComponent implements OnInit {
   public teamsData: Team[] = [];
+  public tournamentName: string = "";
+  public finalRoundData: any[] = [];
+  public SeriesData: any[] = [];
 
   constructor(private admService: AdministrationService) { }
 
   ngOnInit(): void {
-    this.getData()
+    this.getTournamentData();
+    this.getSeriesData();
+    this.getFinalRoundData();
   }
 
-  getData(): void {
+  getTournamentData(): void {
+
+  }
+
+  getSeriesData(): void {
     this.admService.getAllTeams().subscribe(
       (resp: any) => {
         this.teamsData = resp;
       },
-      (e: any) => console.error(e)
+      (e: any) => {
+        console.error(e);
+        alert("Se produjo un error al obtener los datos del servidor.");
+      }
     )
+  }
+
+  getFinalRoundData(): void {
+
   }
 
 }

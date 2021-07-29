@@ -18,4 +18,12 @@ export class AdministrationService {
     return this.http.get<Team[]>(`${this.API_URL}/teams/getAll`);
   }
 
+  getTournamentData(): any {
+
+  }
+
+  getSeriesData(): any {
+    
+  }
+
 }
