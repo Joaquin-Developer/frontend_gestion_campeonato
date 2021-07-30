@@ -12,35 +12,62 @@ import { Team } from '../../models/Team'
 export class StatisticsComponent implements OnInit {
   public teamsData: Team[] = [];
   public tournamentName: string = "";
-  public finalRoundData: any[] = [];
-  public SeriesData: any[] = [];
+  public matchesOfAllSeries: any[] = []
+  public matchesOfFinalRound: any[] = []
+  
+  public accordionProperties: Object = {
+    getCollapse: (i: number): string => {
+      return `collapse${i}`
+    },
+
+    getHeading: (i: number): string => {
+      return `heading${i}`
+    }
+  }
 
   constructor(private admService: AdministrationService) { }
 
   ngOnInit(): void {
-    this.getTournamentData();
-    this.getSeriesData();
-    this.getFinalRoundData();
+    this.getAllMatchesOfAllSeries();
+    // this.getAllFinalRoundMatches();
   }
 
-  getTournamentData(): void {
-
+  getAllMatchesOfAllSeries(): void {
+    this.admService.getAllMatchesOfAllSeries().subscribe(
+      (resp: any) => {
+        this.matchesOfAllSeries = resp;
+        console.log(this.matchesOfAllSeries);
+      },
+      (e: any) => this.showErrorMessage(e)
+    )
   }
+
+  getTournamentData(): void { }
 
   getSeriesData(): void {
     this.admService.getAllTeams().subscribe(
       (resp: any) => {
         this.teamsData = resp;
       },
-      (e: any) => {
-        console.error(e);
-        alert("Se produjo un error al obtener los datos del servidor.");
-      }
+      (e: any) => this.showErrorMessage(e)
     )
   }
 
-  getFinalRoundData(): void {
-
+  getAllFinalRoundMatches(): void {
+    this.admService.getAllFinalRoundMatches().subscribe(
+      (resp: any) => {
+        this.matchesOfFinalRound = resp;
+      },
+      (e: any) => this.showErrorMessage(e)
+    )
   }
+
+  getFinalRoundData(): void { }
+
+  showErrorMessage(e = null): void {
+    console.error(e);
+    alert("Se produjo un error al obtener los datos del servidor.");
+  }
+
 
 }

@@ -3,29 +3,33 @@
 
 <!-- Repeat for each section with ngFor -->
 
-<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
+<div class="accordion">
+    <div class="accordion-item" *ngFor="let elem of this.matchesOfAllSeries; index as i">
+        <h2 class="accordion-header" id="{{ i }}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Accordion Item #1
+                {{ elem.serie }}
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
             <div class="accordion-body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum perferendis nostrum impedit ut fugit quibusdam. Mollitia dolorum fugit, cupiditate, minus omnis sunt magnam cumque adipisci explicabo ratione iure id officia?
-            </div>
-        </div>
-    </div>
-    
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum perferendis nostrum impedit ut fugit quibusdam. Mollitia dolorum fugit, cupiditate, minus omnis sunt magnam cumque adipisci explicabo ratione iure id officia?
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col">Equipo 1</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Equipo 2</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let m of elem.matches">
+                        <tr class="table-active">
+                            <td>{{ m.Team1 }}</td>
+                            <td>{{ m.GoalsTeam1 }}</td>
+                            <td>{{ m.GoalsTeam2 }}</td>
+                            <td>{{ m.Team2 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
